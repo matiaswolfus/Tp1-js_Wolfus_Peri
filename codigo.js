@@ -33,20 +33,181 @@ console.log(numeros);
 
  //EJ 4
 
-const validarPassword = passWord => {
+const validarPassword = password => {
 
-    const arrayContra =[passWord];
-    const hayNumero = arrayContra.filter(e => e == 1) 
-    if (passWord.length >= 8 && hayNUmero ) 
-        {
-            return true;
+    if (password.length < 8) {
+        return false;
+    }
+
+    let tieneNumero = false;
+
+    for (let i = 0; i < password.length; i++) {
+        if (!isNaN(password[i])) {
+            tieneNumero = true;
         }
-        else
-        {
-            return false;
-        }
+    }
+    return tieneNumero;
+};
+const validacion = validarPassword("holaquetal4");
+const validacion2 = validarPassword("holaquetal");
+console.log(validacion, validacion2);
+
+//PARTE 2
+
+//EJ 5
+
+const sumarArray = arrayASumar => {
+    let numeroSumado = 0; 
+
+    for (let i = 0; i < arrayASumar.length; i++) 
+    {
+        numeroSumado += arrayASumar[i]; 
+    }
+
+    return numeroSumado;
 }
-const validacion = validarPassword("holaquetal");
-alert(validacion);
+
+const mostrar = sumarArray([1,2,3,4]);
+console.log(mostrar); 
+
+//EJ 6
+
+//mismo que el 3
+
+// EJ 7
 
 
+const pares = arrayNumeros =>
+{
+    return arrayNumeros.filter(numero => numero % 2 === 0);
+};
+const resultadoPares = pares([1,2,4,5,6,8,10])
+console.log(resultadoPares);
+
+
+//EJ 8
+
+const usuario = {
+ nombre: "Ana",
+ edad: 20,
+ activo: false
+}
+
+const descUsuario = usuario => {
+const msj = `${usuario.nombre} tiene ${usuario.edad} años`;
+return msj;
+}
+
+const h = descUsuario(usuario);
+console.log(h)
+
+//EJ 9
+
+const activarUsuario = usuario => {
+    return usuario.activo = true;
+}
+
+const i = activarUsuario(usuario)
+console.log(i + ". fue activado con exito");
+
+// EJ 10
+
+
+const productos = [
+
+
+{nombre:"Mouse", precio:10},
+
+
+{nombre:"Teclado", precio:25},
+
+
+{nombre:"Monitor", precio:200}
+
+
+]
+
+
+const calcularTotal = productos => {
+
+
+        let totalProductos = 0;
+           
+        productos.forEach(e => {
+        totalProductos += e.precio
+   
+        });
+        return totalProductos;
+}
+const resultadoSuma = calcularTotal(productos)
+console.log(totalProductos)
+
+//EJ 11
+
+const usuarios = [
+
+{nombre:"Ana", edad:17},
+
+{nombre:"Juan", edad:25},
+
+{nombre:"Pedro", edad:30}
+
+]
+
+let arrayNombres = usuarios.map(u => u.nombre);
+console.log(arrayNombres);
+
+//EJ12
+
+let edadF = usuarios.filter(e => e.edad >= 18)
+console.log(edadF)
+
+//13
+
+
+//14
+
+const producto = {
+
+nombre:"Notebook",
+
+precio:1000
+
+}
+const { nombre, precio } = producto;
+console.log(nombre);
+console.log(precio);
+
+//15
+
+const nuevoProducto = {
+    ...producto,   // me deja copiar el producto con todos sus items
+    stock: 5
+};
+
+console.log(nuevoProducto);
+
+//16
+const productosO = [
+    {nombre: "Cargador USB", precio: 18},
+    {nombre: "Smart TV", precio: 550},
+    {nombre: "Mouse Gamer", precio: 75},
+    {nombre: "Teclado Mecánico", precio: 130},
+    {nombre: "Ventilador", precio: 40},
+    {nombre: "Aire Acondicionado", precio: 800},
+    {nombre: "Celular", precio: 999},
+    {nombre: "Funda", precio: 12},
+]
+
+const buscarProducto = (productos, nombre) =>
+{
+
+const producto = productos.filter(e => e === nombre);
+return producto;
+
+}
+
+const a = buscarProducto (productosO, Celular);
+console.log(a)
+
+//revisar
