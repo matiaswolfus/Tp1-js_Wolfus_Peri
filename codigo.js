@@ -140,7 +140,7 @@ const calcularTotal = productos => {
         return totalProductos;
 }
 const resultadoSuma = calcularTotal(productos)
-console.log(totalProductos)
+//console.log(totalProductos)
 
 //EJ 11
 
@@ -163,7 +163,7 @@ let edadF = usuarios.filter(e => e.edad >= 18)
 console.log(edadF)
 
 //13
-
+let totalEdades = usuarios.reduce((total, usuario) => total + usuario.edad, 0);
 
 //14
 
@@ -202,12 +202,78 @@ const productosO = [
 const buscarProducto = (productos, nombre) =>
 {
 
-const producto = productos.filter(e => e === nombre);
+const producto = productos.find(e => e.nombre === nombre);
 return producto;
 
 }
 
-const a = buscarProducto (productosO, Celular);
+const a = buscarProducto (productosO, "Celular");
 console.log(a)
 
-//revisar
+//EJ 17
+
+const  obtenerProductosMayorA50 = productosO => {
+return productosO.filter(producto => producto.precio > 50);
+};
+console.log(obtenerProductosMayorA50(productosO));
+
+
+
+//ULTIMA PARTE
+
+//EJ 1
+const arrayR = [1,2,3,4,5,6,7,8,9,10]
+
+const promedioP = numeros => {
+    const suma = numeros.reduce((total, numero) => total + numero, 0);
+    const promedio = suma / numeros.length;
+    return promedio;
+}
+const resultadoPromedio = promedioP(arrayR);
+console.log(resultadoPromedio)
+
+
+//EJ 2
+
+const usuarios1 = [
+
+{id:1, nombre:"Ana", edad:20},
+
+{id:2, nombre:"Juan", edad:15},
+
+{id:3, nombre:"Pedro", edad:30}
+
+]
+
+const obtenerUsuarios = usuarios1 => {
+    return usuarios1;
+}
+
+const resultadoUsuarios = obtenerUsuarios(usuarios1);
+console.log(resultadoUsuarios)
+
+const obtenerUsuarioPorId = (usuarios1, id) => {
+    const usuario = usuarios1.find(u => u.id === id);
+    return usuario;
+}
+
+//EJ 3
+const obtenerMayorDeEdad = usuarios1 => {
+    return usuarios1.filter(u => u.edad >= 18);
+}
+
+//EJ 4
+
+const crearUsuario = (usuarios1, nuevoUsuario) => {
+
+    const idNuevo = usuarios1[usuarios1.length - 1].id + 1;
+    const usuarioCreado = { id: idNuevo, ...nuevoUsuario };
+    usuarios1.push(usuarioCreado); //push me agrega el nuevo usuario al array de usuarios
+    return usuarioCreado;
+}
+
+
+const nuevoUsuario = { nombre: "Lucia", edad: 22 };
+const usuarioCreado = crearUsuario(usuarios1, nuevoUsuario);
+console.log(usuarioCreado);
+
